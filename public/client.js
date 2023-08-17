@@ -11,9 +11,10 @@ document.getElementById("form").addEventListener("submit", (e) => {
 
 socket.on("chat message", (msg) => {
   const messages = document.getElementById("messages");
-  const username = document.getElementById("uname");
-  username.textContent=msg.username
   const li = document.createElement("li");
-  li.textContent = msg.message;
+
+  // Combine the username and message content
+  li.textContent = `${msg.username}: ${msg.message}`;
+
   messages.appendChild(li);
 });
