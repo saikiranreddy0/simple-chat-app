@@ -2,86 +2,107 @@
 <html>
 <head>
   <title>Socket.IO Chat App</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url('mountains.jpg'); /* Add your background image */
-      background-size: cover;
-      background-position: center;
-      margin: 0;
-      padding: 0;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+  /* Mobile Styles */
+@media (max-width: 768px) {
+  /* Define your mobile-specific styles here */
+}
 
-    #container {
-      max-width: 500px;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 1px solid #e8e8e8;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-    }
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Define your tablet-specific styles here */
+}
 
-    .chat-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  /* Define your desktop-specific styles here */
+}
 
-    .chat-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
+   body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('mountains.jpg'); /* Add your background image */
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(249, 249, 249, 0.5);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-    .chat-username {
-      font-weight: bold;
-    }
+#container { /* Change the id to "container" */
+  max-width: 800px; /* Adjust the maximum width */
+  width: 80%; /* Set the width to a percentage of the container */
+  margin: 0 auto; /* Center the chat box horizontally */
+  padding: 20px;
+  background-color: inherit;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    li {
-      padding: 8px;
-      border-bottom: 1px solid #e8e8e8;
-      opacity: 0.9; /* Apply opacity to list items */
-    }
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-    input[type="text"] {
-      width: 70%;
-      padding: 10px;
-      border: 1px solid #e8e8e8;
-      border-radius: 3px;
-      margin-right: 10px;
-      font-size: 14px;
-      opacity: 0.8; /* Apply opacity to input fields */
-    }
+.chat-username {
+  font-weight: bold;
+}
 
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #65a9d7;
-    }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-    button {
-      padding: 10px 20px;
-      background-color: #25d366;
-      color: white;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 14px;
-      opacity: 0.8; /* Apply opacity to the button */
-    }
+li {
+  padding: 8px;
+  border-bottom: 1px solid #e8e8e8;
+  opacity: 0.9; /* Apply opacity to list items */
+}
 
-    button:hover {
-      background-color: #128c7e;
-    }
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  margin-right: 10px;
+  font-size: 14px;
+  opacity: 0.8; /* Apply opacity to input fields */
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #65a9d7;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #65a9d7 ;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.8; /* Apply opacity to the button */
+}
+
+button:hover {
+  background-color: #128c7e;
+}
+
   </style>
 </head>
 <body>
