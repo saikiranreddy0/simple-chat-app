@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Socket.IO Chat App</title>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <style>
   /* Mobile Styles */
@@ -27,7 +28,7 @@
   background-image: url('mountains.jpg'); /* Add your background image */
   background-size: cover;
   background-position: center;
-  background-color: rgba(249, 249, 249, 0.5);
+  background-color: rgba(249, 249, 249, 0.3);
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
@@ -57,8 +58,14 @@
   margin-right: 10px;
 }
 
-.chat-username {
-  font-weight: bold;
+.message{
+  background-color: brown;
+  margin: 5px 0px;
+  padding: 0.5em;
+  border: 1px solid;
+  border-radius: 4%;
+  width: 40em;
+  
 }
 
 ul {
@@ -119,6 +126,7 @@ button:hover {
       width: 300px;
       height: 200px; /* Adjust the height as needed */
       margin: auto;
+      margin-top: 1rem;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -156,6 +164,10 @@ button:hover {
       background-color: #128c7e;
     }
 
+    .overflowhidden{
+      overflow: hidden !important;
+    }
+
   </style>
 </head>
 <body>
@@ -163,7 +175,8 @@ button:hover {
   <!-- Login Modal -->
   <div id="login-modal" class="modal">
     <div class="modal-content">
-      <h2>Enter Your Username</h2>
+      <h2>Welcome to the chat!</h2>
+      <h4>Enter Your Username</h4>
       <input id="username-input-modal" type="text" placeholder="Username" />
       <button id="join-button-modal">Join Chat</button>
     </div>
