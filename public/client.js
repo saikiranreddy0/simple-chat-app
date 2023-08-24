@@ -69,6 +69,13 @@ document.getElementById("form").addEventListener("submit", (e) => {
   let message = input.value;
   input.value = "";
 
+  // Check for slash commands
+  if (message.startsWith("/")) {
+    const command = message.slice(1).toLowerCase(); // Remove the leading slash
+    handleSlashCommand(command);
+    return;
+  }
+
   // Replace specific words with emojis
   message = message.replace(/\b\w+\b/g, (word) => {
     const emoji = emojis[word.toLowerCase()];
@@ -78,6 +85,39 @@ document.getElementById("form").addEventListener("submit", (e) => {
   // Emit the "chat message" event with the message
   socket.emit("chat message", { message });
 });
+
+// Handle slash commands
+function handleSlashCommand(command) {
+  const messages = document.getElementById("messages");
+  const li = document.createElement("li");
+
+  switch (command) {
+    case "help":
+      li.textContent =
+        "Available slash commands:\n" +
+        "\n /help - Display the list of available commands and their functions.\n" +
+        "\n /clear - Clear the chat messages.\n" +
+        "\n /random - Display a random number.";
+      break;
+
+    case "clear":
+      messages.innerHTML = ""; // Clear the chat messages
+      li.textContent = "Chat has been cleared.";
+      break;
+
+    case "random":
+       const maxRandomNumber = 100000;
+      const randomNumber = Math.floor(Math.random() * maxRandomNumber) + 1; // Generate a random number between 1 and 100
+      li.textContent = `Random number: ${randomNumber}`;
+      break;
+
+    default:
+      li.textContent = `Unknown command: ${command}`;
+      break;
+  }
+
+  messages.appendChild(li);
+}
 
 // Socket event listener for receiving messages
 socket.on("chat message", (msg) => {
